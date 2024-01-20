@@ -26,7 +26,7 @@ const Navbar = () => {
                 ABOUT
               </li>
             </Link>
-            <Link to="/signin">
+            <Link to="/signup">
               <li className="list-none m-2 text-lg hover:text-white">
                 LOGIN
               </li>
