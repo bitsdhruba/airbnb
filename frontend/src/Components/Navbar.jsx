@@ -28,7 +28,7 @@ const Navbar = () => {
             </Link>
             <Link to="/signup">
               <li className="list-none m-2 text-lg hover:text-white">
-                LOGIN
+                LOGIN/SIGNUP
               </li>
             </Link>
           </ul>

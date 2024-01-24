@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import  { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   
   const [formData, setFormData] = useState({username:'', email : '', password : ''});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   function changeHandler(e){
     setFormData({
@@ -33,6 +34,7 @@ const SignUp = () => {
       }
       setLoading(false);    
       setError(null);  
+      navigate('/');
     } catch (error) {
       setLoading(false);
       setError(error.message);
@@ -43,11 +45,14 @@ const SignUp = () => {
   return (
     <div className="w-full h-full overflow-hidden">
       <div className="w-[30%] mt-[6rem] h-fit m-auto ">
-        <div className='flex justify-evenly'>
-          <span className="text-3xl text-center text-red-600 font-bold bg-slate-400 rounded-xl p-3">
+        <h1 className="text-center text-2xl text-slate-600 mb-4">
+          Create your Account
+        </h1>
+        <div className="flex justify-evenly">
+          <span className="text-3xl text-center text-red-600 font-bold bg-slate-400 rounded-xl p-3 border border-solid border-slate-600">
             Sign up
           </span>
-          <span className="text-3xl text-center text-red-600 font-bold">
+          <span className="text-3xl text-center text-red-600 font-bold border border-solid border-slate-600 rounded-xl p-3">
             <Link to="/login">Login</Link>
           </span>
         </div>
@@ -77,7 +82,7 @@ const SignUp = () => {
             type="text"
             placeholder="enter your email"
             name="email"
-            id= "email"
+            id="email"
             value={formData.email}
             onChange={changeHandler}
             className="w-[80%] m-2 p-2 text-lg bg-slate-400 border-solid border-slate-500 border-1 rounded-lg"
@@ -95,7 +100,11 @@ const SignUp = () => {
             onChange={changeHandler}
             className="w-[80%] m-2 p-2 text-lg bg-slate-400 border-solid border-slate-500 border-1 rounded-lg"
           />
-          <button disabled={loading} className="w-[60%] text-lg m-2 p-2 rounded-lg border-solid border-1 border-slate-500 bg-red-400" onClick={submitHandler}>
+          <button
+            disabled={loading}
+            className="w-[60%] text-lg m-2 p-2 rounded-lg border-solid border-1 border-slate-500 bg-red-400"
+            onClick={submitHandler}
+          >
             {loading ? "Loading..." : "SignUp"}
           </button>
           <button className="w-[80%] text-lg m-2 p-2 rounded-lg border-solid border-1 border-slate-500 bg-red-500">
